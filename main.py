@@ -14,6 +14,12 @@ def encode(password_string): # Encodes the passowrd by adding 3 to each of the n
         encode_password += str(encode_value)
     return encode_password
 
+def decode_password(password_string):
+    decode_password = []
+    for digit in password_string:  # for char in len(0, len(password)
+        if digit.isdigit():
+            decode_password.append(str(int(digit) - 3))
+    return ''.join(decode_password)
 
 def menu():
     while True: # Loops menu if you don't exit
@@ -24,7 +30,8 @@ def menu():
             encoded_result = encode(user_password) # Stores the encoded function
             print("Your password has been encoded and stored!\n")
         if user_input == "2": # Prints encoded password and then decodes it to print it as well
-            print(f"The encoded password is {encoded_result}, and the original password is {decode_password(encoded_result)}.\n")
+            decoded_result = decode_password(encoded_result)
+            print(f"The encoded password is {encoded_result}, and the original password is {decoded_result}.\n")
         if user_input == "3":
             break # Exits
 
